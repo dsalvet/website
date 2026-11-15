@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>David Salvét — Senior DevOps Engineer</title>
+<meta name="description" content="David Salvét, Senior DevOps engineer in Prague. Azure platforms for regulated financial systems: Kubernetes, Terraform, CI/CD and observability.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://salvet.eu/">
+<meta property="og:title" content="David Salvét — Senior DevOps Engineer">
+<meta property="og:description" content="Azure platforms for regulated financial systems: Kubernetes, Terraform, CI/CD and observability.">
+<meta property="og:image" content="https://salvet.eu/img/profile.jpg">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f766e'/><text x='50' y='66' font-family='monospace' font-size='46' font-weight='700' fill='white' text-anchor='middle'>DS</text></svg>">
+<style>
+  :root {
+    --bg: #f8fafc; --surface: #ffffff; --fg: #0f172a; --muted: #475569; --line: #e2e8f0;
+    --accent: #0d9488; --accent-2: #2563eb; --chip: #f0fdfa; --grid: rgba(15, 23, 42, .06);
+    --term-bg: #0f172a; --term-fg: #e2e8f0;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(15,23,42,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #020617; --surface: #0f172a; --fg: #e2e8f0; --muted: #94a3b8; --line: #1e293b;
+      --accent: #2dd4bf; --accent-2: #60a5fa; --chip: #042f2e; --grid: rgba(148, 163, 184, .07);
+      --term-bg: #0b1220; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.3);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+
+  /* Hero */
+  .hero {
+    position: relative; overflow: hidden; padding: 80px 0 64px;
+    background-image: radial-gradient(var(--grid) 1px, transparent 1px);
+    background-size: 22px 22px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: -40% -10% auto auto; width: 520px; height: 520px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent) 22%, transparent), transparent 65%);
+    pointer-events: none;
+  }
+  .hero .wrap { position: relative; display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+  .avatar {
+    display: block; width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin-bottom: 20px;
+    border: 3px solid transparent; box-shadow: var(--shadow);
+    background: linear-gradient(var(--bg), var(--bg)) padding-box, linear-gradient(135deg, var(--accent), var(--accent-2)) border-box;
+  }
+  h1 { font-size: 2.8rem; line-height: 1.05; margin: 0 0 .4rem; letter-spacing: -.02em; }
+  .role { font: 1.05rem var(--mono); color: var(--accent); margin: 0 0 1rem; }
+  .lead { font-size: 1.1rem; color: var(--muted); margin: 0; }
+  .links { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 0; padding: 0; list-style: none; }
+  .links a {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 8px;
+    text-decoration: none; font-weight: 600; border: 1px solid var(--line); background: var(--surface); color: var(--fg);
+    transition: transform .15s, border-color .15s;
+  }
+  .links a.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  @media (prefers-color-scheme: dark) { .links a.primary { color: #042f2e; } }
+  .links a:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .links svg { width: 18px; height: 18px; }
+
+  /* Terminal card */
+  .term {
+    background: var(--term-bg); color: var(--term-fg); border-radius: 12px; box-shadow: var(--shadow);
+    font: .85rem/1.7 var(--mono); overflow: hidden; border: 1px solid var(--line);
+  }
+  .term-bar { display: flex; gap: 6px; padding: 10px 14px; background: rgba(255,255,255,.04); }
+  .term-bar span { width: 11px; height: 11px; border-radius: 50%; background: #ef4444; }
+  .term-bar span:nth-child(2) { background: #f59e0b; }
+  .term-bar span:nth-child(3) { background: #22c55e; }
+  .term pre { margin: 0; padding: 16px 18px 20px; white-space: pre-wrap; }
+  .t-prompt { color: #2dd4bf; } .t-key { color: #94a3b8; } .t-ok { color: #22c55e; }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: -32px; position: relative; }
+  .stat {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; box-shadow: var(--shadow);
+  }
+  .stat b { display: block; font: 700 1.8rem var(--mono); color: var(--accent); }
+  .stat span { color: var(--muted); font-size: .9rem; }
+
+  /* Sections */
+  section { padding-top: 56px; }
+  h2 {
+    font: 600 .8rem var(--mono); text-transform: uppercase; letter-spacing: .12em;
+    color: var(--accent); margin: 0 0 20px; display: flex; align-items: center; gap: 12px;
+  }
+  h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  h3 { font-size: 1.05rem; margin: 0; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px;
+    border-top: 3px solid var(--accent);
+  }
+  .card:nth-child(even) { border-top-color: var(--accent-2); }
+  .card h3 { font-size: .95rem; margin-bottom: 10px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
+  .chips li {
+    font: .8rem var(--mono); background: var(--chip); border: 1px solid var(--line);
+    border-radius: 4px; padding: 3px 8px;
+  }
+
+  /* Timeline */
+  .timeline { list-style: none; padding: 0; margin: 0; position: relative; }
+  .timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+  .job { position: relative; padding-left: 36px; margin-bottom: 36px; }
+  .job::before {
+    content: ""; position: absolute; left: 0; top: 6px; width: 16px; height: 16px; border-radius: 50%;
+    background: var(--bg); border: 3px solid var(--accent);
+  }
+  .job.current::before { background: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 20%, transparent); }
+  .job header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; }
+  .company { color: var(--accent); }
+  .meta { font: .8rem var(--mono); color: var(--muted); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; height: fit-content; }
+  .job ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
+  .job li { margin-bottom: 4px; }
+
+  /* Certifications */
+  .certs { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+  .cert {
+    display: flex; gap: 14px; align-items: center; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 14px 16px; color: var(--fg); text-decoration: none; transition: transform .15s, border-color .15s;
+  }
+  .cert:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .cert img { flex: none; width: 64px; height: 64px; object-fit: contain; }
+  .cert small { display: block; color: var(--muted); }
+  .cert small span { color: var(--accent); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  footer { margin: 64px 0 0; padding: 24px 0 40px; border-top: 1px solid var(--line); font-size: .85rem; color: var(--muted); }
+
+  @media (max-width: 720px) {
+    .hero { padding: 48px 0 56px; }
+    .hero .wrap { grid-template-columns: 1fr; }
+    h1 { font-size: 2.2rem; }
+    .stats { grid-template-columns: 1fr; }
+    .two { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) { .wrap { padding: 0 16px; } }
+  @media (prefers-reduced-motion: reduce) { .links a, .cert { transition: none; } }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <img class="avatar" src="img/profile.jpg" alt="David Salvét" width="96" height="96">
+      <h1>David Salvét</h1>
+      <p class="role">Senior DevOps Engineer · Prague, Czechia</p>
+      <p class="lead">
+        I build Azure platforms for regulated financial systems — cutting cloud costs,
+        moving infrastructure to code and making systems observable.
+        10+ years across Kubernetes, Azure and AWS.
+        <em>Quality doesn't cost, it pays.</em>
+      </p>
+      <ul class="links">
+        <li><a class="primary" href="#" data-u="david" data-d="salvet.eu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          Email me</a></li>
+        <li><a href="https://www.linkedin.com/in/david-salvet-448757121/">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn</a></li>
+      </ul>
+    </div>
+    <div class="term" aria-hidden="true">
+      <div class="term-bar"><span></span><span></span><span></span></div>
+<pre><span class="t-prompt">$</span> kubectl describe engineer david
+<span class="t-key">Name:</span>       David Salvét
+<span class="t-key">Role:</span>       Senior DevOps Engineer
+<span class="t-key">Location:</span>   Prague, CZ
+<span class="t-key">Cloud:</span>      azure, aws
+<span class="t-key">Tooling:</span>    k8s, terraform, ansible
+<span class="t-key">Uptime:</span>     10+ years
+<span class="t-key">Status:</span>     <span class="t-ok">● Running</span></pre>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="stats">
+    <div class="stat"><b>10+</b><span>years in operations</span></div>
+    <div class="stat"><b>&gt;50%</b><span>infrastructure cost cut</span></div>
+    <div class="stat"><b>2×</b><span>active Azure certifications</span></div>
+  </div>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="card"><h3>Containers &amp; GitOps</h3><ul class="chips"><li>Kubernetes</li><li>AKS</li><li>OpenShift</li><li>Docker</li><li>Helm</li><li>Helmfile</li><li>ArgoCD</li><li>Flux</li></ul></div>
+      <div class="card"><h3>Cloud</h3><ul class="chips"><li>Azure</li><li>AWS</li><li>OpenStack</li><li>DigitalOcean</li></ul></div>
+      <div class="card"><h3>IaC &amp; Config</h3><ul class="chips"><li>Terraform</li><li>Ansible</li><li>Molecule</li></ul></div>
+      <div class="card"><h3>CI/CD</h3><ul class="chips"><li>Azure DevOps</li><li>GitLab CI</li><li>Jenkins</li><li>Bitbucket Pipelines</li><li>Drone CI</li></ul></div>
+      <div class="card"><h3>Observability</h3><ul class="chips"><li>Prometheus</li><li>Grafana</li><li>Thanos</li><li>Alertmanager</li><li>Loki</li><li>Fluent Bit</li><li>ELK</li></ul></div>
+      <div class="card"><h3>Security &amp; Systems</h3><ul class="chips"><li>Anchore</li><li>SonarQube</li><li>Hadolint</li><li>Linux</li><li>Windows Server</li></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <ol class="timeline">
+      <li class="job current">
+        <header><h3>Senior DevOps Engineer · <span class="company">NN Group</span></h3><span class="meta">2026 – present</span></header>
+        <ul>
+          <li>DevOps services for internal financial applications: cloud, containerisation, observability, automation and compliance.</li>
+          <li>Microsoft Azure and Azure DevOps.</li>
+        </ul>
+      </li>
+      <li class="job">
+        <header><h3>DevOps Engineer &amp; Infra Squad Lead · <span class="company">NN Group</span></h3><span class="meta">2022 – 2026</span></header>
+        <ul>
+          <li>Ran a third-party application on Azure Kubernetes Service for EU-mandated financial reporting.</li>
+          <li><strong>Cut infrastructure costs by more than 50%.</strong></li>
+          <li><strong>Moved the entire infrastructure to code</strong> — Azure resources (VMs with Oracle DB, storage) in Terraform, VM configuration in Ansible.</li>
+          <li><strong>Introduced observability</strong> to the solution.</li>
+          <li>Built and maintained CI through Azure DevOps pipelines.</li>
+        </ul>
+      </li>
+      <li class="job">
+        <header><h3>DevOps Engineer · <span class="company">Fiserv</span></h3><span class="meta">2022</span></header>
+        <ul>
+          <li>Monitoring platform (Prometheus, Grafana, Thanos, Alertmanager) across on-prem and cloud.</li>
+          <li>AWS infrastructure with Terraform; automation with GitLab CI.</li>
+          <li>Kubernetes deployments with ArgoCD and Flux.</li>
+        </ul>
+      </li>
+      <li class="job">
+        <header><h3>DevOps Engineer · <span class="company">NOTIX</span></h3><span class="meta">2020 – 2022</span></header>
+        <ul>
+          <li>CI/CD pipelines (Jenkins, Bitbucket Pipelines, GitLab) for in-house Java applications.</li>
+          <li>Custom Helm charts and Helmfiles for Kubernetes and OpenShift; managed dev and prod clusters.</li>
+          <li>Ansible and Terraform automation, Ansible testing with Molecule.</li>
+          <li>Monitoring and logging stacks (Prometheus, Grafana, Loki, Fluent Bit) and automated code/image scanning.</li>
+          <li>Planned and delivered infrastructure projects for Czech corporate clients.</li>
+        </ul>
+      </li>
+      <li class="job">
+        <header><h3>System Administrator · <span class="company">Clientigent</span></h3><span class="meta">2014 – 2020</span></header>
+        <ul>
+          <li>Built the company's infrastructure from scratch: bare metal, OpenStack, AWS, DigitalOcean.</li>
+          <li>Administered Linux and Windows servers — provisioning, updates, backups, troubleshooting.</li>
+          <li>CI/CD (GitLab CI, Drone CI, Bitbucket Pipelines), Ansible automation, Prometheus/Grafana/ELK monitoring.</li>
+          <li>On-call production support and operations guidance for developers.</li>
+        </ul>
+      </li>
+      <li class="job">
+        <header><h3>IT Specialist · <span class="company">AERO Vodochody AEROSPACE</span></h3><span class="meta">2013</span></header>
+        <ul>
+          <li>Prepared presentations and IT materials for partners.</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Certifications</h2>
+    <div class="certs">
+      <a class="cert" href="https://learn.microsoft.com/api/credentials/share/en-us/DavidSalvet/789844224373D0FA?sharingId&amp;trk=public_profile_see-credential"><img src="img/ms-expert.svg" alt=""><div><b>DevOps Engineer Expert</b><small>Microsoft · AZ-400 · <span>Verify ↗</span></small></div></a>
+      <a class="cert" href="https://learn.microsoft.com/api/credentials/share/en-us/DavidSalvet/378DBCFDB60525E6?sharingId&amp;trk=public_profile_see-credential"><img src="img/ms-associate.svg" alt=""><div><b>Azure Administrator Associate</b><small>Microsoft · AZ-104 · <span>Verify ↗</span></small></div></a>    </div>
+  </section>
+
+  <section class="two">
+    <div>
+      <h2>Open source</h2>
+      <div class="card"><h3><a href="https://verdaccio.org/">Verdaccio</a></h3><span style="color:var(--muted)">Czech translation of the private npm registry.</span></div>
+    </div>
+    <div>
+      <h2>Languages</h2>
+      <div class="card"><ul class="chips"><li>Czech — native</li><li>English — professional</li></ul></div>
+    </div>
+  </section>
+
+  <footer>© 2026 David Salvét · <a href="#" data-u="david" data-d="salvet.eu">Get in touch</a></footer>
+</main>
+<script>
+  // Build mailto links at runtime so the address isn't in the HTML for scrapers.
+  document.querySelectorAll('[data-u]').forEach(a => { a.href = 'mailto:' + a.dataset.u + '@' + a.dataset.d; });
+</script>
+</body>
+</html>
